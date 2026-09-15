@@ -1,20 +1,24 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import Work from "./pages/Work/Work";
-import Contacts from "./pages/Contacts/Contacts";
 import "./App.css";
+
+// Lazy-loaded page components for faster initial load
+const Home = lazy(() => import("./pages/Home/Home"));
+const About = lazy(() => import("./pages/About/About"));
+const Work = lazy(() => import("./pages/Work/Work"));
+const Contacts = lazy(() => import("./pages/Contacts/Contacts"));
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/work" element={<Work />} />
-        <Route path="/contact" element={<Contacts />} />
-      </Routes>
+      <Suspense fallback={<div style={{ minHeight: "100vh", background: "var(--bg)" }} />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/contact" element={<Contacts />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }

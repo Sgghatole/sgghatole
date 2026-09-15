@@ -10,7 +10,7 @@ function Hero() {
   useEffect(() => {
     const video = videoRef.current;
     const section = sectionRef.current;
-    if (!video || !section || !isVideoReady) return;
+    if (!video || !section) return;
 
     let ticking = false;
 
@@ -23,7 +23,10 @@ function Hero() {
           if (totalHeroScroll > 0 && video.duration) {
             // Calculate scroll distance inside the Hero section (0.0 to 1.0)
             const currentScroll = Math.max(0, -rect.top);
-            const scrollFraction = Math.min(1, Math.max(0, currentScroll / totalHeroScroll));
+            const scrollFraction = Math.min(
+              1,
+              Math.max(0, currentScroll / totalHeroScroll)
+            );
 
             // Sync current video time directly to scroll position
             video.currentTime = scrollFraction * video.duration;
@@ -36,8 +39,12 @@ function Hero() {
       }
     };
 
+    // Attach listener immediately if video metadata is already loaded
+    if (video.readyState >= 1) {
+      setIsVideoReady(true);
+    }
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Trigger initial calculation
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
