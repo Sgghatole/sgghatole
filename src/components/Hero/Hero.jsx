@@ -32,7 +32,6 @@ function Hero() {
             const targetTime = scrollFraction * video.duration;
 
             // Only update video position if time shifted significantly (>0.03s)
-            // Prevents overloading mobile GPUs during rapid touch scrolls
             if (Math.abs(video.currentTime - targetTime) > 0.03) {
               video.currentTime = targetTime;
             }
@@ -67,8 +66,8 @@ function Hero() {
           preload="auto"
           onLoadedMetadata={() => setIsVideoReady(true)}
         >
-          {/* Serves vertical 9:16 video to screens 768px wide or smaller */}
-          <source src="/Videos/HeroVidMob.mp4" media="(max-width: 768px)" />
+          {/* Serves keyframe-optimized 9:16 video to screens 768px wide or smaller */}
+          <source src="/Videos/HeroVidMob_scrub.mp4" media="(max-width: 768px)" />
 
           {/* Default fallback for tablets and desktops */}
           <source src="/Videos/HeroVid_optimized.mp4" />
