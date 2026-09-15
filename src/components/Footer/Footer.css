@@ -1,0 +1,76 @@
+/* Footer outer section - aligned with the 1200px main container */
+.footer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid #c8c8c8; 
+  box-sizing: border-box;
+}
+
+/* Left Title: Accent Orange */
+.footer-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Right Social Link & Hover Behavior */
+.footer-social-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888888;
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-social-link:hover {
+  color: var(--accent);
+}
+
+.desktop-text {
+  display: inline-block;
+}
+
+.mobile-icon {
+  display: none;
+  font-size: 1.2rem;
+}
+
+/* Disclaimer line - small, muted, only shown when passed in */
+.footer-disclaimer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 1.1rem 0 0 0;
+  font-size: 0.68rem;
+  color: #a3a3a3;
+  text-align: left;
+  letter-spacing: 0.2px;
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  .footer-disclaimer {
+    font-size: 0.62rem;
+    text-align: left;
+    margin-top: 0.9rem;
+    padding-right: 0.5rem;
+  }
+}

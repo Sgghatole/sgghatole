@@ -1,0 +1,25 @@
+/* Hero Container - controls the total scroll length for the video */
+.hero {
+  height: 350vh; /* Gives enough scroll distance for full video playback */
+  position: relative;
+  width: 100%;
+}
+
+/* Sticky Wrapper - pins the video to the screen while scrolling */
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6e6e6; /* Matches Neumorphic base tone */
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

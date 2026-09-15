@@ -1,0 +1,215 @@
+/* Page Wrapper Base */
+.about-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e6e6e6;
+  box-sizing: border-box;
+}
+
+/* Outer Container with Navbar Offset */
+.about-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  padding: 6.5rem 1.5rem 3rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* 1. Main Outer Neumorphic Card Frame (Expanded Height) */
+.about-outer-frame {
+  width: 100%;
+  border-radius: 44px;
+  background: #e6e6e6;
+  box-shadow: 24px 24px 60px #bebebe, 
+             -24px -24px 60px #ffffff;
+  padding: 4.5rem 4rem; /* Increased top/bottom and side padding */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem; /* Increased spacing between top grid and bottom marquee */
+  overflow: hidden;
+}
+
+/* 2. Top Grid Layout (Desktop: Side-by-Side) */
+.about-top-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* Left Circle (Taller Video Frame) */
+.about-avatar-circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  box-shadow: 14px 14px 30px #bebebe, 
+             -14px -14px 30px #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  overflow: hidden;
+}
+
+.avatar-video-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;   /* new — ensures video fills the circle, crops instead of distorting */
+}
+
+/* Right Card (Taller Text Container) */
+.about-text-card {
+  width: 100%;
+  height: 320px; /* Perfectly matches the expanded 320px circle height */
+  background: #e6e6e6;
+  border-radius: 32px;
+  padding: 2.75rem 3rem;
+  box-sizing: border-box;
+  box-shadow: 10px 10px 25px #bebebe, 
+             -10px -10px 25px #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title & Spacing */
+.about-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.about-title-line {
+  width: 100%;
+  height: 2px;
+  background-color: #d0d0d0;
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.about-text-content {
+  font-size: 1.05rem;
+  color: #666666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 3. Bottom Capsule (Taller Inset Tech Stack Marquee) */
+.tech-capsule-inset {
+  width: 100%;
+  height: 110px;
+  border-radius: 55px;
+  background: #e6e6e6;
+  box-shadow: inset 8px 8px 18px #bebebe, 
+              inset -8px -8px 18px #ffffff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Infinite Marquee Track */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+  /* gap removed — spacing now comes from each icon's own margin */
+}
+
+.tech-capsule-inset:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Larger Neumorphic Node Circles */
+.tech-circle-node {
+  width: 68px;
+  height: 68px;
+  margin-right: 2rem;     /* replaces the old container "gap" */
+  border-radius: 50%;
+  background: #e6e6e6;
+  box-shadow: 6px 6px 14px #bebebe, 
+             -6px -6px 14px #ffffff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+} 
+
+.tech-icon-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+/* Responsive Mobile Layout */
+@media (max-width: 900px) {
+  .about-wrapper {
+    padding-top: 5.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .about-outer-frame {
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+    border-radius: 30px;
+  }
+
+  .about-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-avatar-circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about-text-card {
+    height: auto;
+    min-height: 200px;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .tech-capsule-inset {
+    height: 85px;
+    border-radius: 42.5px;
+  }
+
+  .tech-circle-node {
+    width: 52px;
+    height: 52px;
+  }
+}

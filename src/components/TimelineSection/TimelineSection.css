@@ -1,0 +1,242 @@
+/* Container & Outer Card Grid */
+.timeline-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.timeline-card-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 3.5rem 3rem;
+  border-radius: 35px;
+   background: var(--bg);
+  box-shadow: 20px 20px 40px #d6d6d3, 
+             -20px -20px 40px #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3.5rem;
+  box-sizing: border-box;
+}
+
+/* Left Pane Layout */
+.timeline-left-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Recessed Display Screen */
+/* Recessed Display Screen with 16:9 Landscape Aspect Ratio (1920x1080) */
+.timeline-screen-outer {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Maintains fixed 1920:1080 proportion */
+  height: auto; /* Replaces fixed height so aspect ratio controls scale */
+  border-radius: 20px;
+  background: #e6e6e6;
+  padding: 12px;
+  box-shadow: inset 6px 6px 12px #bebebe, 
+              inset -6px -6px 12px #ffffff;
+  box-sizing: border-box;
+}
+
+.timeline-screen-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.screen-content-placeholder {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* Years Navigation Bar */
+.timeline-years-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  background: #e6e6e6;
+  box-shadow: inset 3px 3px 6px #bebebe, 
+              inset -3px -3px 6px #ffffff;
+}
+
+/* Base Year Label Styling */
+.timeline-year-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #777777;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.timeline-year-label:hover {
+  color: #1a1a1a;
+}
+
+/* Active Orange Highlight (for 2021 on load & active selections) */
+.timeline-year-label.active {
+  color: var(--accent);
+  font-weight: 900;
+  transform: scale(1.15);
+}
+
+/* Description Text */
+.timeline-text-display {
+  min-height: 50px;
+}
+
+.timeline-description {
+  font-size: 1rem;
+  color: #444444;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.timeline-subheading {
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+/* Right Pane: Braun Rotary Dial & Progress Ring */
+.timeline-right-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dial-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SVG Arc Ring rotated -90deg so 0% progress starts at 12 o'clock (top) */
+.dial-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.dial-track-bg {
+  fill: none;
+  stroke: #d0d0d0;
+  stroke-width: 6;
+}
+
+.dial-progress-arc {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tactile Rotary Knob */
+.rotary-knob-outer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  box-shadow: 10px 10px 20px #bebebe, 
+             -10px -10px 20px #ffffff;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rotary-knob-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #e6e6e6;
+  box-shadow: inset 4px 4px 8px #bebebe, 
+              inset -4px -4px 8px #ffffff;
+}
+
+/* Position indicator dot at top center (12 o'clock) */
+.knob-indicator-dot {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 6px rgba(242, 86, 35, 0.6);
+}
+
+/* Mobile Responsive Adaptation */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 2rem 1rem;
+  }
+
+  .timeline-card-container {
+    flex-direction: column;
+    padding: 1.75rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  /* 16:9 Display Screen */
+  .timeline-screen-outer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  /* Hide the Rotary Dial System completely on mobile */
+  .timeline-right-pane {
+    display: none;
+  }
+
+  /* Lock text container height on mobile to stop frame jumps */
+  .timeline-text-display {
+    height: 70px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  /* Minimal custom scrollbar for text overflow */
+  .timeline-text-display::-webkit-scrollbar {
+    width: 3px;
+  }
+  .timeline-text-display::-webkit-scrollbar-thumb {
+    background: #c2c2c2;
+    border-radius: 3px;
+  }
+
+  .timeline-years-bar {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .timeline-year-label {
+    font-size: 0.85rem;
+  }
+}
