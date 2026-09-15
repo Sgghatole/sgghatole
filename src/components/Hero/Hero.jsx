@@ -28,8 +28,14 @@ function Hero() {
               Math.max(0, currentScroll / totalHeroScroll)
             );
 
-            // Sync current video time directly to scroll position
-            video.currentTime = scrollFraction * video.duration;
+            // Calculate target video timestamp
+            const targetTime = scrollFraction * video.duration;
+
+            // Only update video position if time shifted significantly (>0.03s)
+            // Prevents overloading mobile GPUs during rapid touch scrolls
+            if (Math.abs(video.currentTime - targetTime) > 0.03) {
+              video.currentTime = targetTime;
+            }
           }
 
           ticking = false;
